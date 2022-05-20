@@ -271,6 +271,4 @@ class GPA_CalculatorApp(App):  # takes the func name as default for title bar
 
 
 if __name__ == "__main__":
-    GPA_CalculatorApp().run(
-
-    )
+    GPA_CalculatorApp().run()
