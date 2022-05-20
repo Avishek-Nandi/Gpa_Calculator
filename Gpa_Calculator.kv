@@ -1,0 +1,1318 @@
+Manager:
+    WelcomeScreen:
+    MenuScreen:
+    CseCGPA:
+    MatCGPA:
+    PhyCGPA:
+    EngCGPA:
+
+<WelcomeScreen>:
+    name: 'WelcomeScreen'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width , root.height
+
+        padding: 10
+        spacing: 20
+
+        Label:
+            text:""
+            size_hint: (1,0.15)
+
+
+        Image:
+            source: 'data/icons/logo.png'
+            pos_hint: {'center_x':0.5}
+            size_hint: (1,1)
+            padding: 10
+
+        Button:
+            text: "Get Started"
+            pos_hint: {'center_x':0.5}
+            size_hint: (.4,0.2)
+            font_size: '20sp'
+            on_press: root.get_pressed()
+            on_release: app.root.current = "MenuScreen"
+
+
+        Label:
+            text:"Developed by, Avishek Nandi"
+            font_size: '12sp'
+            pos_hint: {'center_x':0.8}
+            size_hint: (0.3,0.2)
+
+
+
+<MenuScreen>:
+    name: 'MenuScreen'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width , root.height
+
+        padding: 10
+        spacing: 20
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1,0.2)
+
+            Label:
+                text:"Course Selection"
+                bold: True
+                font_size: '30sp'
+                size_hint: (0.25,1)
+                pos_hint: {'center_x':1}
+            Label:
+                size_hint: (0.35,1)
+            Button:
+
+                background_normal: ""
+                background_color: (61/255, 61/255, 61/255, 1)
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.1}
+                on_press: root.pressed()
+                on_release: app.root.current = "WelcomeScreen"
+
+                Image:
+                    id: back_image
+                    source: 'data/icons/back.png'
+                    width: 50
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+        Label:
+            text:""
+            size_hint: (0.3,0.1)
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 20
+
+            Button:
+                text: "CSE110"
+                size_hint: (1,0.2)
+                font_size: '20sp'
+                on_press: root.cse_pressed()
+                on_release: app.root.current = 'CseGPA'
+            Button:
+                text: "MAT110"
+                size_hint: (1,0.2)
+                font_size: '20sp'
+                on_press: root.mat_pressed()
+                on_release: app.root.current = 'MatGPA'
+
+            Button:
+                text: "PHY111"
+                size_hint: (1,0.2)
+                on_press: root.phy_pressed()
+                on_release: app.root.current = 'PhyGPA'
+                font_size: '20sp'
+
+            Button:
+                text: "ENG101"
+                size_hint: (1,0.2)
+                on_press: root.eng_pressed()
+                on_release: app.root.current = 'EngGPA'
+                font_size: '20sp'
+
+
+
+        Label:
+            text:""
+            size_hint: (0.3,0.2)
+
+
+
+<CseCGPA>:
+    name: 'CseGPA'
+
+    nam: nam
+    stu_id: stu_id
+    mid: mid
+    lab: lab
+    quiz_1: quiz1
+    quiz_2: quiz2
+    quiz_3: quiz3
+    attendance: att
+    final: final
+    result: res
+    btn: btn
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        padding: 5
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1,0.2)
+
+            Image:
+                source: 'data/icons/logo2.png'
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.1}
+                padding: 5
+
+            Label:
+                text:"GPA Calculator CSE"
+                font_size: '20sp'
+                bold: True
+                size_hint_y: None
+                pos_hint: {'center_x':0.5}
+                height: 65
+
+
+            Button:
+                background_normal: ""
+                background_color: (61/255, 61/255, 61/255, 1)
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.95}
+                on_press: root.pressed_cse()
+                on_release: app.root.current = "MenuScreen"
+
+
+                Image:
+                    id: back_image_cse
+                    source: 'data/icons/back.png'
+                    width: 35
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text:"Name: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                write_tab: False
+                id:nam
+                multiline:False
+                font_size: '17sp'
+
+            Label:
+                text:"Student ID: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id:stu_id
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Lab: (25)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: lab
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 1: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz1
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 2: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz2
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 3: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz3
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Attendance: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: att
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Mid: (20)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: mid
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Final: (30)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: final
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+        Label:
+            id: res
+            font_size: '20sp'
+            text:""
+            size_hint_y: None
+            height: 150
+
+        Button:
+            id: btn
+            text: "Calculate"
+            #background_color: (240/255,126/255,5/255,1)
+            size_hint_y: None
+            height: 55
+            font_size: '20sp'
+            on_press: root.calculate()
+
+
+<MatCGPA>:
+    name: 'MatGPA'
+
+    nam: nam
+    stu_id: stu_id
+    mid: mid
+    lab: lab
+    quiz_1: quiz1
+    quiz_2: quiz2
+    quiz_3: quiz3
+    attendance: att
+    final: final
+    result: res
+    btn: btn
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        padding: 5
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1,0.2)
+
+            Image:
+                source: 'data/icons/logo2.png'
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.1}
+                padding: 5
+
+            Label:
+                text:"GPA Calculator MAT"
+                font_size: '20sp'
+                bold: True
+                size_hint_y: None
+                pos_hint: {'center_x':0.5}
+                height: 65
+
+
+            Button:
+                background_normal: ""
+                background_color: (61/255, 61/255, 61/255, 1)
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.95}
+                on_press: root.pressed_mat()
+                on_release: app.root.current = "MenuScreen"
+
+
+                Image:
+                    id: back_image_cse
+                    source: 'data/icons/back.png'
+                    width: 35
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text:"Name: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                write_tab: False
+                id:nam
+                multiline:False
+                font_size: '17sp'
+
+            Label:
+                text:"Student ID: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id:stu_id
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Lab: (20+1)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: lab
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 1: (25)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz1
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 2: (20)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz2
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 3: (15)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz3
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Attendance: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: att
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Mid: (250)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: mid
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Final: (300)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: final
+                multiline:False
+                font_size: '17sp'
+                write_tab: False
+
+        Label:
+            id: res
+            font_size: '20sp'
+            text:""
+            size_hint_y: None
+            height: 150
+
+        Button:
+            id: btn
+            text: "Calculate"
+            #background_color: (240/255,126/255,5/255,1)
+            size_hint_y: None
+            height: 55
+            font_size: '20sp'
+            on_press: root.calculate_mat()
+
+
+<PhyCGPA>:
+    name: 'PhyGPA'
+
+    nam: nam
+    stu_id: stu_id
+    mid: mid
+    lab: lab
+    quiz_1: quiz1
+    quiz_2: quiz2
+    quiz_3: quiz3
+    attendance: att
+    final: final
+    result: res
+    btn: btn
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        padding: 5
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1,0.2)
+
+            Image:
+                source: 'data/icons/logo2.png'
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.1}
+                padding: 5
+
+            Label:
+                text:"GPA Calculator PHY"
+                font_size: '20sp'
+                bold: True
+                size_hint_y: None
+                pos_hint: {'center_x':0.5}
+                height: 65
+
+
+            Button:
+                background_normal: ""
+                background_color: (61/255, 61/255, 61/255, 1)
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.95}
+                on_press: root.pressed_phy()
+                on_release: app.root.current = "MenuScreen"
+
+
+                Image:
+                    id: back_image_cse
+                    source: 'data/icons/back.png'
+                    width: 35
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text:"Name: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                write_tab: False
+                id:nam
+                multiline:False
+                font_size: '15sp'
+
+            Label:
+                text:"Student ID: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id:stu_id
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Lab: (25)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: lab
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Marks in Quiz 1: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz1
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Marks in Quiz 2: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz2
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Quiz 3: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz3
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Marks in Quiz 4: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz4
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Marks in Quiz 5: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: quiz5
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Lab Report: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: report
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Marks in Attendance: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: att
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Mid: (40)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: mid
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Final: (30)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: final
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+        Label:
+            id: res
+            font_size: '20sp'
+            text:""
+            size_hint_y: 0.3
+
+        Button:
+            id: btn
+            text: "Calculate"
+            #background_color: (240/255,126/255,5/255,1)
+            size_hint_y: None
+            height: 55
+            font_size: '20sp'
+            on_press: root.calculate_phy()
+
+
+<EngCGPA>:
+    name: 'EngGPA'
+
+    nam: nam
+    stu_id: stu_id
+    mid: mid
+    quiz_1: quiz1
+    quiz_2: quiz2
+    quiz_3: quiz3
+    attendance: att
+    final: final
+    result: res
+    btn: btn
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+        padding: 5
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1,0.2)
+
+            Image:
+                source: 'data/icons/logo2.png'
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.1}
+                padding: 5
+
+            Label:
+                text:"GPA Calculator Eng"
+                font_size: '20sp'
+                bold: True
+                size_hint_y: None
+                pos_hint: {'center_x':0.5}
+                height: 65
+
+
+            Button:
+                background_normal: ""
+                background_color: (61/255, 61/255, 61/255, 1)
+                size_hint: (0.1,1)
+                pos_hint: {'center_x':0.95}
+                on_press: root.pressed_eng()
+                on_release: app.root.current = "MenuScreen"
+
+
+                Image:
+                    id: back_image_cse
+                    source: 'data/icons/back.png'
+                    width: 35
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text:"Name: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                write_tab: False
+                id:nam
+                multiline:False
+                font_size: '15sp'
+
+            Label:
+                text:"Student ID: "
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id:stu_id
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Debate: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: debate
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Writing Quizzes: (10)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            BoxLayout:
+                orientation: 'horizontal'
+
+                Label:
+                    text:"Quiz 1: "
+                    font_size: '17sp'
+                    size_hint_x: 1
+                    background_color: (72/255,72/255,72/255,1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                TextInput:
+                    id: quiz1
+                    multiline:False
+                    font_size: '15sp'
+                    write_tab: False
+
+                Label:
+                    text:"Quiz 2: "
+                    font_size: '17sp'
+                    size_hint_x: 1
+                    background_color: (67/255,67/255,67/255,1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                TextInput:
+                    id: quiz2
+                    multiline:False
+                    font_size: '15sp'
+                    write_tab: False
+
+                Label:
+                    text:"Quiz 3: "
+                    font_size: '17sp'
+                    size_hint_x: 1
+                    background_color: (72/255,72/255,72/255,1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                TextInput:
+                    id: quiz3
+                    multiline:False
+                    font_size: '15sp'
+                    write_tab: False
+
+                Label:
+                    text:"Quiz 4: "
+                    font_size: '17sp'
+                    size_hint_x: 1
+                    background_color: (67/255,67/255,67/255,1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                TextInput:
+                    id: quiz4
+                    multiline:False
+                    font_size: '15sp'
+                    write_tab: False
+
+            Label:
+                text:"Listening Quiz: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: lis_quiz
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Journal Entry: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: journal_ent
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Journal Presentation: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            BoxLayout:
+                orientation: 'horizontal'
+
+                TextInput:
+                    id: journal_pre
+                    multiline:False
+                    font_size: '15sp'
+                    write_tab: False
+
+                Label:
+                    text:"Action Plan Presentation: (10)"
+                    font_size: '17sp'
+                    size_hint_x: None
+                    width: 250
+                    background_color: (67/255,67/255,67/255,1)
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                TextInput:
+                    id: act_pre
+                    multiline:False
+                    font_size: '15sp'
+                    write_tab: False
+
+
+            Label:
+                text:"Assignments: (15)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: assign
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Data Log Submission: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: dls
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+
+            Label:
+                text:"Marks in Attendance: (5)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: att
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Mid: (15)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (72/255,72/255,72/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: mid
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+            Label:
+                text:"Marks in Final: (20)"
+                font_size: '17sp'
+                size_hint_x: None
+                width: 250
+                background_color: (67/255,67/255,67/255,1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            TextInput:
+                id: final
+                multiline:False
+                font_size: '15sp'
+                write_tab: False
+
+        Label:
+            id: res
+            font_size: '20sp'
+            text:""
+            size_hint_y: 0.3
+
+        Button:
+            id: btn
+            text: "Calculate"
+            #background_color: (240/255,126/255,5/255,1)
+            size_hint_y: None
+            height: 55
+            font_size: '20sp'
+            on_press: root.calculate()
